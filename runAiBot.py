@@ -984,7 +984,7 @@ def apply_to_jobs(search_terms: list[str]) -> None:
             print_lg(driver.page_source, pretty=True)
             # print_lg(e)
 
-        
+import streamlit as st       
 def run(total_runs: int) -> int:
     if dailyEasyApplyLimitReached:
         return total_runs
@@ -1094,7 +1094,8 @@ def main() -> None:
         ai_close_openai_client(aiClient)
         try: driver.quit()
         except Exception as e: critical_error_log("When quitting...", e)
-
-
+text=st.selectbox('search term')
+if text:
+  apply_to_jobs(text)
 if __name__ == "__main__":
-    main()
+            main()
